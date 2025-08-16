@@ -26,6 +26,19 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
+//fetch team data from the api with ofetch
+import { ofetch } from "ofetch"
+const teams = ofetch.create({
+  baseURL: "http://localhost:8000/api/",
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+});
+
+console.log(teams);
+
+
 // This is sample data.
 const data = {
   user: {
