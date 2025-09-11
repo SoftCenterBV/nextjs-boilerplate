@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {sendGTMEvent} from "@next/third-parties/google";
 
 export function RegisterForm({
                                  className,
@@ -107,7 +108,7 @@ export function RegisterForm({
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 {success && <p className="text-green-500 text-sm">{success}</p>}
 
-                <Button type="submit" className="w-full" disabled={isPending}>
+                <Button type="submit" className="w-full" disabled={isPending} onClick={() => sendGTMEvent({ event: 'register_button_click', value: 'test' })}>
                     {isPending ? "Creating..." : "Create Account"}
                 </Button>
             </div>
