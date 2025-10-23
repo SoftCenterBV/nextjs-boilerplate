@@ -65,14 +65,18 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Components",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
+          {
+              title: "Cards",
+                url: "/components/cards",
+          },
         {
-          title: "History",
-          url: "#",
+          title: "Datatables",
+          url: "/components/datatables",
         },
         {
           title: "Starred",
