@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDown, Plus } from "lucide-react"
+import {ChevronsUpDown, Plus, Settings} from "lucide-react"
 
 import {
   DropdownMenu,
@@ -60,6 +60,15 @@ export function TeamSwitcher({
                 side={isMobile ? "bottom" : "right"}
                 sideOffset={4}
             >
+              <DropdownMenuItem>
+
+                  <div className="flex size-6 items-center justify-center rounded-md border">
+                      <Settings className="size-3.5 shrink-0" />
+                  </div>
+                  <a href='/organization/settings' className="flex flex-1">
+                  Settings
+                  </a>
+              </DropdownMenuItem>
               <DropdownMenuLabel className="text-muted-foreground text-xs">
                 Teams
               </DropdownMenuLabel>
