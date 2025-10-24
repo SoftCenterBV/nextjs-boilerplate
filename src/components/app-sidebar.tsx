@@ -15,21 +15,25 @@ import {
 } from "@/components/ui/sidebar"
 
 import {SidebarData} from "@/data/sidebar";
-const data = SidebarData();
+import {TeamsData} from "@/data/teams";
+import {CurrentUserData} from "@/data/current-user";
+
+const sidebar = SidebarData();
+const teams = TeamsData();
+const currentUser = CurrentUserData();
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
       <Sidebar collapsible="icon" {...props}>
         <SidebarHeader>
-          <TeamSwitcher teams={data.teams} />
+          <TeamSwitcher teams={teams.teams} />
         </SidebarHeader>
         <SidebarContent>
-          <NavGroup items={data.main} />
-          <NavGroup items={data.documentation}  title="documentation"/>
-          <NavMain items={data.navMain} />
+          <NavGroup items={sidebar.main} />
+          <NavGroup items={sidebar.documentation}  title="Documentation"/>
         </SidebarContent>
         <SidebarFooter>
-          <NavUser user={data.user} />
+          <NavUser user={currentUser.user} />
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
