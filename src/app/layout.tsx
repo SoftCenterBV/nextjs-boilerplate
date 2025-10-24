@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-        <GoogleTagManager gtmId="GTM-WNSN4FCW" />
+        <GoogleTagManager gtmId={process.env.GTM_ID || ""} />
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
