@@ -1,4 +1,11 @@
-import {AudioWaveform, BookOpen, Command, Frame, GalleryVerticalEnd, Map, PieChart, SquareTerminal} from "lucide-react";
+import {
+    AudioWaveform,
+    BookOpen,
+    Command,
+    GalleryVerticalEnd,
+    Monitor,
+    SquareTerminal
+} from "lucide-react";
 
 export function SidebarData() {
 
@@ -62,21 +69,18 @@ export function SidebarData() {
                 ],
             },
         ],
-        projects: [
+        documentation:[
             {
-                name: "Design Engineering",
-                url: "#",
-                icon: Frame,
-            },
+                name: "Support",
+                url: "/documentation/support",
+                icon: BookOpen,
+            }
+        ],
+        main: [
             {
-                name: "Sales & Marketing",
-                url: "#",
-                icon: PieChart,
-            },
-            {
-                name: "Travel",
-                url: "#",
-                icon: Map,
+                name: "Dashboard",
+                url: "/",
+                icon: Monitor,
             },
         ],
     }
