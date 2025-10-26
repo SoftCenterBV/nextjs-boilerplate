@@ -23,6 +23,8 @@ export default function LoginLayout({
             <div className="bg-muted relative hidden lg:block">
                 <Image
                     src="https://picsum.photos/800/900"
+                    width="800"
+                    height="900"
                     alt="Image"
                     className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />

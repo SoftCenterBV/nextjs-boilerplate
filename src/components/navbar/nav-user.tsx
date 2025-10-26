@@ -85,10 +85,13 @@ export function NavUser({
                     <Flag/>
                     English
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <User />
-                  Profile
-                </DropdownMenuItem>
+                  <a href="/user/settings">
+                    <DropdownMenuItem>
+                        <User />
+                        Profile
+                    </DropdownMenuItem>
+                  </a>
+
                   <DropdownMenuSub>
                       <DropdownMenuSubTrigger><Sun className="mr-2 h-4 w-4" />Appearance</DropdownMenuSubTrigger>
                       <DropdownMenuPortal>

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {login} from "@/lib/auth/login";
 
 export function LoginForm({
                               className,
@@ -15,6 +16,42 @@ export function LoginForm({
     const [error, setError] = useState<string | null>(null);
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
+
+    // async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    //     e.preventDefault();
+    //     setError(null);
+    //
+    //     const formData = new FormData(e.currentTarget);
+    //     const email = formData.get("email") as string;
+    //     const password = formData.get("password") as string;
+    //
+    //     startTransition(async () => {
+    //         try {
+    //             const res = await fetch("http://localhost:8000/api/auth/login", {
+    //                 method: "POST",
+    //                 headers: { "Content-Type": "application/json" },
+    //                 body: JSON.stringify({ email, password })
+    //             });
+    //
+    //             if (!res.ok) {
+    //                 const data = await res.json();
+    //                 setError(data.message || "Login failed");
+    //                 return;
+    //             }
+    //
+    //             const data = await res.json();
+    //             localStorage.setItem("token", data.token);
+    //             router.push("/dashboard");
+    //
+    //         } catch (err: unknown) {
+    //             if (err instanceof Error) {
+    //                 setError(err.message);
+    //             } else {
+    //                 setError(String(err));
+    //             }
+    //         }
+    //     });
+    // }
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -26,28 +63,10 @@ export function LoginForm({
 
         startTransition(async () => {
             try {
-                const res = await fetch("http://localhost:8000/api/auth/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password })
-                });
-
-                if (!res.ok) {
-                    const data = await res.json();
-                    setError(data.message || "Login failed");
-                    return;
-                }
-
-                const data = await res.json();
-                localStorage.setItem("token", data.token);
-                router.push("/dashboard");
-
-            } catch (err: unknown) {
-                if (err instanceof Error) {
-                    setError(err.message);
-                } else {
-                    setError(String(err));
-                }
+                const user = await login(email, password);
+                router.push("/");
+            } catch (err: any) {
+                setError(err.response?.data?.message || "Login failed");
             }
         });
     }
