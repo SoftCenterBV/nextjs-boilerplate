@@ -60,15 +60,17 @@ export function TeamSwitcher({
                 side={isMobile ? "bottom" : "right"}
                 sideOffset={4}
             >
+                <a href='/organization/settings'>
               <DropdownMenuItem>
 
                   <div className="flex size-6 items-center justify-center rounded-md border">
                       <Settings className="size-3.5 shrink-0" />
                   </div>
-                  <a href='/organization/settings' className="flex flex-1">
+
                   Settings
-                  </a>
+
               </DropdownMenuItem>
+                </a>
               <DropdownMenuLabel className="text-muted-foreground text-xs">
                 Teams
               </DropdownMenuLabel>
