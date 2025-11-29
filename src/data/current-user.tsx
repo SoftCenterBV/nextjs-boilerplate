@@ -1,8 +1,3 @@
-import {
-    BookOpen,
-    Monitor,
-} from "lucide-react";
-
 export function CurrentUserData() {
 
     return {

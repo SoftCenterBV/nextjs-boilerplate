@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "login": {
+      "unknownError": "An unknown error occurred during login. Please try again later."
+    },
+    "logout": "Logout",
+    "signup": "Sign Up",
+    "forgotPassword": "Forgot Password?"
+  },  "errors": {
+  "networkError": "Network error occurred. Please try again.",
+  "unauthorized": "You are not authorized to perform this action.",
+  "notFound": "The requested resource was not found.",
+  "serverError": "An unexpected server error occurred. Please contact support.",
+  "validationError": "There were validation errors. Please check your input."
+  }
+}

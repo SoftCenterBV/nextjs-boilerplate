@@ -1,4 +1,3 @@
-"use client";
 import { AppSidebar } from "@/components/navbar/app-sidebar"
 
 import {
@@ -6,16 +5,27 @@ import {
     SidebarProvider,
 } from "@/components/ui/sidebar"
 import {AppHeader} from "@/components/app-header";
+import { getCurrentUserProfile } from '@/lib/api/user';
+import {logout} from "@/lib/api";
+import {redirect} from "next/navigation";
 
-import { useAuthGuard } from "@/hooks/useAuthGuard";
-
-
-export default function DashboardLayout({
+export default async function DashboardLayout({
                                             children,
                                         }: {
     children: React.ReactNode;
 }) {
-    useAuthGuard();
+    const userProfile = await getCurrentUserProfile();
+    if (!userProfile) {
+        const result = await logout();
+        if (result.success) {
+            redirect(result.redirectUrl);
+        } else {
+            // If logout fails, redirect to login page as fallback
+            redirect('/en/login');
+        }
+    }
+
+
     return (
         <SidebarProvider>
             <AppSidebar />

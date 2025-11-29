@@ -9,12 +9,19 @@ import {
 } from "@/components/ui/breadcrumb";
 import {SidebarTrigger} from "@/components/ui/sidebar";
 import { Separator } from './ui/separator';
-import {usePathname} from "next/navigation";
+import { locales, usePathname } from '@/i18n/routing';
 import React from "react";
+
 
 export function AppHeader() {
     const pathname = usePathname();
     const pathSegments = pathname.split('/').filter((segment) => segment);
+
+    let displaySegments = pathSegments;
+    if (locales.includes(pathSegments[0])) {
+        displaySegments = pathSegments.slice(1);
+    }
+
 
     return (
         <>
@@ -30,7 +37,7 @@ export function AppHeader() {
                                     Dashboard
                                 </BreadcrumbLink>
                             </BreadcrumbItem>
-                            {pathSegments.map((segment, index) => {
+                            {displaySegments.map((segment, index) => {
                                 const href = `/${pathSegments.slice(0, index + 1).join('/')}`;
                                 const isLast = index === pathSegments.length - 1;
 

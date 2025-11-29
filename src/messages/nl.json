@@ -1,0 +1,15 @@
+{
+  "Home": {
+    "welcome": "Welkom op onze website!"
+  },
+  "Menu": {
+    "general": "Algemeen",
+    "billing": "Facturatie",
+    "Team": "Team"
+  },
+  "Organization":
+    {
+        "title": "Organisatie",
+        "description": "Informatie over onze organisatie."
+    }
+}

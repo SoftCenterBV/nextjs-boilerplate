@@ -18,7 +18,6 @@ export default function LoginLayout({
                     </a>
                 </div>
                 {children}
-
             </div>
             <div className="bg-muted relative hidden lg:block">
                 <Image

@@ -1,33 +1,27 @@
 "use client"
 
-import {
-    ChevronsUpDown,
-    Flag,
-    LogOut, Monitor, Moon,
-    Sun, User,
-} from "lucide-react"
+import {ChevronsUpDown, Flag, LogOut, Monitor, Moon, Sun, User,} from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import {Avatar, AvatarFallback, AvatarImage,} from "@/components/ui/avatar"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
-    DropdownMenuLabel, DropdownMenuPortal,
-    DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar"
+import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar,} from "@/components/ui/sidebar"
 import {useTheme} from "next-themes";
+import {logout} from "@/lib/api";
+import {startTransition} from "react";
+import {router} from "next/client";
+import {toast} from "sonner";
 
 export function NavUser({
                           user,
@@ -41,7 +35,37 @@ export function NavUser({
   const { isMobile } = useSidebar()
   const { setTheme } = useTheme()
 
-  return (
+    const handleLogout = async () => {
+        startTransition(() => {
+            logout()
+                .then((result) => {
+                    if (result.success) {
+                        // Logout successful, redirect to the specified URL
+                        router.push(result.redirectUrl);
+                    } else {
+                        // Logout failed, show error message
+                        const { error } = result;
+                        const title = 'Logout Failed';
+                        let description = 'An unknown error occurred during logout.';
+
+                        // Extract the key part from the full messageKey
+                        if (error.messageKey?.startsWith('auth.logout.')) {
+                            description = error.messageKey.replace('auth.logout.', '');
+                        }
+                            toast.error(title, { description });
+                    }
+                })
+                .catch(() => {
+                    // This should only happen for unexpected errors
+                    toast.error('failed', {
+                        description: 'unknownError',
+                    });
+                });
+        });
+    };
+
+
+    return (
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
@@ -104,7 +128,7 @@ export function NavUser({
                   </DropdownMenuSub>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>
                 <LogOut />
                 Log out
               </DropdownMenuItem>
