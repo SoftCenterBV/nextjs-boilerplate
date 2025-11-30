@@ -15,13 +15,16 @@ import {
 
 import {SidebarData} from "@/data/sidebar";
 import {TeamsData} from "@/data/teams";
-import {CurrentUserData} from "@/data/current-user";
+import {OrganizationData, UserData} from "@/lib/api";
 
 const sidebar = SidebarData();
 const teams = TeamsData();
-const currentUser = CurrentUserData();
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+    userProfile: UserData | null,
+}
+
+export function AppSidebar({ userProfile, ...props }: AppSidebarProps) {
   return (
       <Sidebar collapsible="icon" {...props}>
         <SidebarHeader>
@@ -32,7 +35,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <NavGroup items={sidebar.documentation}  title="Documentation"/>
         </SidebarContent>
         <SidebarFooter>
-          <NavUser user={currentUser.user} />
+          <NavUser userProfile={userProfile} />
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>

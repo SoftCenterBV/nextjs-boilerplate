@@ -8,6 +8,7 @@ import {AppHeader} from "@/components/app-header";
 import { getCurrentUserProfile } from '@/lib/api/user';
 import {logout} from "@/lib/api";
 import {redirect} from "next/navigation";
+import {getUserOrganizations} from "@/lib/api/organization";
 
 export default async function DashboardLayout({
                                             children,
@@ -15,6 +16,7 @@ export default async function DashboardLayout({
     children: React.ReactNode;
 }) {
     const userProfile = await getCurrentUserProfile();
+    const organizations = await getUserOrganizations()
     if (!userProfile) {
         const result = await logout();
         if (result.success) {
@@ -28,7 +30,7 @@ export default async function DashboardLayout({
 
     return (
         <SidebarProvider>
-            <AppSidebar />
+            <AppSidebar  userProfile={userProfile}/>
             <SidebarInset>
                 <AppHeader />
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">

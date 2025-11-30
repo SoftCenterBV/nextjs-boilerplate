@@ -4,11 +4,14 @@ import UserProfileSettings from "@/components/user/user-profile-settings";
 import UserAccountSettings from "@/components/user/user-account-settings";
 import UserSecuritySettings from "@/components/user/user-security-settings";
 import UserNotificationSettings from "@/components/user/user-notification-settings";
+import {getCurrentUserProfile} from "@/lib/api/user";
 
-export default function UserSettings() {
+export default async function UserSettings() {
+
+    const userData = await getCurrentUserProfile();
     return (
         <>
-            <ProfileHeader/>
+            <ProfileHeader userData={userData}/>
             <Tabs defaultValue="personal" className="space-y-6">
             <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="personal">Personal</TabsTrigger>
@@ -17,7 +20,7 @@ export default function UserSettings() {
                 <TabsTrigger value="notifications">Notifications</TabsTrigger>
             </TabsList>
 
-            <UserProfileSettings/>
+            <UserProfileSettings userData={userData} />
             <UserAccountSettings/>
             <UserSecuritySettings/>
             <UserNotificationSettings/>

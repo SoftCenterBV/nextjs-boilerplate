@@ -29,20 +29,22 @@ export type ApiError = {
  */
 
 export type UserData = {
-    id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    avatar: string | null;
-    language: string;
-    metadata: string[];
-    is_system_admin: boolean;
-    organization_id: string | null;
-    role: string;
-    two_factor_enabled: boolean;
-    created_at: string;
-    updated_at: string;
-    organization: OrganizationData | null;
+    data: {
+        id: string;
+        first_name: string;
+        last_name: string;
+        email: string;
+        avatar: string | null;
+        language: string;
+        metadata: string[];
+        is_system_admin: boolean;
+        organization_id: string | null;
+        role: string;
+        two_factor_enabled: boolean;
+        created_at: string;
+        updated_at: string;
+        organization: OrganizationData | null;
+    }
 };
 
 /**

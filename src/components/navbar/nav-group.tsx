@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar"
 import {usePathname} from "next/navigation";
 import {cn} from "@/lib/utils";
+import {Link} from "@/i18n/routing";
 
 export function NavGroup({
                              title,
@@ -42,10 +43,10 @@ export function NavGroup({
                               : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                       )}
                   >
-                      <a href={item.url}>
+                      <Link href={item.url}>
                           <item.icon className="w-4 h-4" />
                           <span>{item.name}</span>
-                      </a>
+                      </Link>
                   </SidebarMenuButton>
               </SidebarMenuItem>
           ))}

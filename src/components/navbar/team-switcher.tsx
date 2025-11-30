@@ -18,6 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import {Link} from "@/i18n/routing";
 
 export function TeamSwitcher({
                                teams,
@@ -60,7 +61,7 @@ export function TeamSwitcher({
                 side={isMobile ? "bottom" : "right"}
                 sideOffset={4}
             >
-                <a href='/organization/settings'>
+                <Link href='/organization/settings'>
               <DropdownMenuItem>
 
                   <div className="flex size-6 items-center justify-center rounded-md border">
@@ -70,7 +71,7 @@ export function TeamSwitcher({
                   Settings
 
               </DropdownMenuItem>
-                </a>
+                </Link>
               <DropdownMenuLabel className="text-muted-foreground text-xs">
                 Teams
               </DropdownMenuLabel>

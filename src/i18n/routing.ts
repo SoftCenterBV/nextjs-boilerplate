@@ -1,16 +1,13 @@
 import { createNavigation } from 'next-intl/navigation';
 import { defineRouting } from 'next-intl/routing';
 import type { FlagComponent } from 'country-flag-icons/react/3x2';
-import { DE, ES, FR, NL, US } from 'country-flag-icons/react/3x2';
+import { NL, US } from 'country-flag-icons/react/3x2';
 
-export const locales = ['en', 'nl', 'de', 'es', 'fr'];
+export const locales = ['en', 'nl'];
 
 export const languageMap: Record<string, { label: string; Icon: FlagComponent }> = {
     nl: { label: 'Nederlands', Icon: NL },
     en: { label: 'English', Icon: US },
-    de: { label: 'Deutsch', Icon: DE },
-    es: { label: 'Español', Icon: ES },
-    fr: { label: 'Français', Icon: FR },
 };
 
 export const routing = defineRouting({

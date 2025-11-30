@@ -12,7 +12,7 @@ interface ProfileFormNewProps {
     userData: UserData | null;
 }
 
-export default function ProfileHeader({userData}: ProfileFormNewProps) {
+export default function OrganizationProfileHeader({userData}: ProfileFormNewProps) {
     const [firstName] = useState(userData?.data.first_name);
     const [lastName] = useState(userData?.data.last_name);
     const [email] = useState(userData?.data.email);
@@ -35,6 +35,7 @@ export default function ProfileHeader({userData}: ProfileFormNewProps) {
                     <div className="flex-1 space-y-2">
                         <div className="flex flex-col gap-2 md:flex-row md:items-center">
                             <h1 className="text-2xl font-bold">{firstName} {lastName}</h1>
+                            <Badge variant="secondary">Pro Member</Badge>
                         </div>
                         <div className="text-muted-foreground flex flex-wrap gap-4 text-sm">
                             <div className="flex items-center gap-1">
