@@ -10,9 +10,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import {usePathname} from "next/navigation";
 import {cn} from "@/lib/utils";
-import {Link} from "@/i18n/routing";
+import {Link, usePathname} from "@/i18n/routing";
 
 export function NavGroup({
                              title,
@@ -39,8 +38,8 @@ export function NavGroup({
                       className={cn(
                           "flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
                           pathname === item.url
-                              ? "bg-primary text-primary-foreground"
-                              : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                              ? "bg-primary-foreground text-primary"
+                              : "text-foreground hover:bg-accent hover:text-accent-foreground"
                       )}
                   >
                       <Link href={item.url}>
