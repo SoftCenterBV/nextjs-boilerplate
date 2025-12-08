@@ -6,11 +6,33 @@
     "logout": "Logout",
     "signup": "Sign Up",
     "forgotPassword": "Forgot Password?"
-  },  "errors": {
-  "networkError": "Network error occurred. Please try again.",
-  "unauthorized": "You are not authorized to perform this action.",
-  "notFound": "The requested resource was not found.",
-  "serverError": "An unexpected server error occurred. Please contact support.",
-  "validationError": "There were validation errors. Please check your input."
+  },
+  "menu": {
+    "home": "Home",
+    "profile": "Profile",
+    "settings": "Settings",
+    "documentation": "Documentation",
+    "appearance": "Appearance",
+    "help": "Help"
+  },
+  "profile": {
+    "tabs": {
+      "profile": "Profile",
+      "account": "Account",
+      "security": "Security",
+      "notification": "Notification"
+    }
+  },
+  "appearance": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "errors": {
+    "networkError": "Network error occurred. Please try again.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "The requested resource was not found.",
+    "serverError": "An unexpected server error occurred. Please contact support.",
+    "validationError": "There were validation errors. Please check your input."
   }
 }

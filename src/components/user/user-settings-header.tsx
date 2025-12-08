@@ -2,20 +2,19 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Camera, Calendar, Mail, MapPin } from "lucide-react";
+import { Camera, Mail } from "lucide-react";
 import {UserData} from "@/lib/api";
 import {useState} from "react";
 
 interface ProfileFormNewProps {
     userData: UserData | null;
 }
-
 export default function ProfileHeader({userData}: ProfileFormNewProps) {
     const [firstName] = useState(userData?.data.first_name);
     const [lastName] = useState(userData?.data.last_name);
     const [email] = useState(userData?.data.email);
+
     return (
         <Card>
             <CardContent>
@@ -43,7 +42,7 @@ export default function ProfileHeader({userData}: ProfileFormNewProps) {
                             </div>
                         </div>
                     </div>
-                    <Button variant="default">Edit Profile</Button>
+                    <Button variant="default" disabled>Save</Button>
                 </div>
             </CardContent>
         </Card>

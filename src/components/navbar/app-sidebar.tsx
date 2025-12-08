@@ -16,6 +16,7 @@ import {
 import {SidebarData} from "@/data/sidebar";
 import {TeamsData} from "@/data/teams";
 import {OrganizationData, UserData} from "@/lib/api";
+import {useTranslations} from "next-intl";
 
 const sidebar = SidebarData();
 const teams = TeamsData();
@@ -25,6 +26,7 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 }
 
 export function AppSidebar({ userProfile, ...props }: AppSidebarProps) {
+    const t = useTranslations('menu');
   return (
       <Sidebar collapsible="icon" {...props}>
         <SidebarHeader>
@@ -32,7 +34,7 @@ export function AppSidebar({ userProfile, ...props }: AppSidebarProps) {
         </SidebarHeader>
         <SidebarContent>
           <NavGroup items={sidebar.main} />
-          <NavGroup items={sidebar.documentation}  title="Documentation"/>
+          <NavGroup items={sidebar.documentation}  title={t('documentation')}/>
         </SidebarContent>
         <SidebarFooter>
           <NavUser userProfile={userProfile} />

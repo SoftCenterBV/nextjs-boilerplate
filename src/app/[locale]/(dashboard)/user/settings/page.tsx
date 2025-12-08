@@ -14,7 +14,7 @@ export default async function UserSettings() {
             <ProfileHeader userData={userData}/>
             <Tabs defaultValue="personal" className="space-y-6">
             <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="personal">Personal</TabsTrigger>
+                <TabsTrigger value="personal">Profile</TabsTrigger>
                 <TabsTrigger value="account">Account</TabsTrigger>
                 <TabsTrigger value="security">Security</TabsTrigger>
                 <TabsTrigger value="notifications">Notifications</TabsTrigger>

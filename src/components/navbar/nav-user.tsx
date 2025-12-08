@@ -23,9 +23,8 @@ import {startTransition} from "react";
 import {router} from "next/client";
 import {toast} from "sonner";
 import {Link} from "@/i18n/routing";
-import {NL, US} from "country-flag-icons/react/3x2";
-import languageSelector from "@/components/language-selector";
 import LanguageSelector from "@/components/language-selector";
+import {useTranslations} from "next-intl";
 
 interface NavUserProps {
     userProfile: UserData | null;
@@ -33,6 +32,9 @@ interface NavUserProps {
 
 
 export function NavUser({ userProfile }: NavUserProps) {
+    const tMenu = useTranslations('menu');
+    const tAppearance = useTranslations('appearance');
+    const tAuth = useTranslations('auth');
     const profileName = userProfile ? `${userProfile.data.first_name} ${userProfile.data.last_name}` : 'User';
     const profileEmail = userProfile?.data.email || '';
     const avatarSrc = userProfile?.data.avatar || undefined;
@@ -117,17 +119,17 @@ export function NavUser({ userProfile }: NavUserProps) {
                   <Link href="/user/settings">
                     <DropdownMenuItem>
                         <User />
-                        Profile
+                        {tMenu('profile')}
                     </DropdownMenuItem>
                   </Link>
 
                   <DropdownMenuSub>
-                      <DropdownMenuSubTrigger><Sun className="mr-2 h-4 w-4" />Appearance</DropdownMenuSubTrigger>
+                      <DropdownMenuSubTrigger><Sun className="mr-2 h-4 w-4" />{tMenu('appearance')}</DropdownMenuSubTrigger>
                       <DropdownMenuPortal>
                           <DropdownMenuSubContent>
-                              <DropdownMenuItem onClick={() => setTheme("light")}><Sun/>Light</DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => setTheme("dark")}><Moon/>Dark</DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => setTheme("system")}><Monitor/>System</DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => setTheme("light")}><Sun/>{tAppearance('light')}</DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => setTheme("dark")}><Moon/>{tAppearance('dark')}</DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => setTheme("system")}><Monitor/>{tAppearance('system')}</DropdownMenuItem>
                           </DropdownMenuSubContent>
                       </DropdownMenuPortal>
                   </DropdownMenuSub>
@@ -135,7 +137,7 @@ export function NavUser({ userProfile }: NavUserProps) {
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogout}>
                 <LogOut />
-                Log out
+                  {tAuth('logout')}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

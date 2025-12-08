@@ -19,6 +19,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import {Link} from "@/i18n/routing";
+import {useTranslations} from "next-intl";
 
 export function TeamSwitcher({
                                teams,
@@ -29,6 +30,7 @@ export function TeamSwitcher({
     plan: string
   }[]
 }) {
+    const t = useTranslations('menu')
   const { isMobile } = useSidebar()
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
 
@@ -67,9 +69,7 @@ export function TeamSwitcher({
                   <div className="flex size-6 items-center justify-center rounded-md border">
                       <Settings className="size-3.5 shrink-0" />
                   </div>
-
-                  Settings
-
+                {t('settings')}
               </DropdownMenuItem>
                 </Link>
               <DropdownMenuLabel className="text-muted-foreground text-xs">

@@ -1,15 +1,38 @@
 {
-  "Home": {
-    "welcome": "Welkom op onze website!"
+  "auth": {
+    "login": {
+      "unknownError": "Een onbekende fout ontstond tijdens het inloggen. Probeer het later opnieuw."
+    },
+    "logout": "Uitloggen",
+    "signup": "Registreren",
+    "forgotPassword": "Wachtwoord vergeten?"
   },
-  "Menu": {
-    "general": "Algemeen",
-    "billing": "Facturatie",
-    "Team": "Team"
+  "menu": {
+    "home": "Home",
+    "profile": "Profiel",
+    "settings": "Instellingen",
+    "documentation": "Documentatie",
+    "appearance": "Weergave",
+    "help": "Help"
   },
-  "Organization":
-    {
-        "title": "Organisatie",
-        "description": "Informatie over onze organisatie."
+  "profile": {
+    "tabs": {
+      "profile": "Profiel",
+      "account": "Account",
+      "security": "Beveiliging",
+      "notification": "Meldingen"
     }
+  },
+  "appearance": {
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem"
+  },
+  "errors": {
+    "networkError": "Er is een netwerkfout opgetreden. Probeer het opnieuw.",
+    "unauthorized": "Je bent niet gemachtigd om deze actie uit te voeren.",
+    "notFound": "De opgevraagde bron is niet gevonden.",
+    "serverError": "Er is een onverwachte serverfout opgetreden. Neem contact op met de support.",
+    "validationError": "Er zijn validatiefouten opgetreden. Controleer je invoer."
+  }
 }
