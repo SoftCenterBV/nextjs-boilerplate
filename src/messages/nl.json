@@ -23,6 +23,9 @@
       "notification": "Meldingen"
     }
   },
+  "teams": {
+    "addTeam": "Team toevoegen"
+  },
   "appearance": {
     "light": "Licht",
     "dark": "Donker",

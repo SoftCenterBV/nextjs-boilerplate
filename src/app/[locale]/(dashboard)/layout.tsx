@@ -16,7 +16,6 @@ export default async function DashboardLayout({
     children: React.ReactNode;
 }) {
     const userProfile = await getCurrentUserProfile();
-    const organizations = await getUserOrganizations()
     if (!userProfile) {
         const result = await logout();
         if (result.success) {
@@ -26,11 +25,13 @@ export default async function DashboardLayout({
             redirect('/en/login');
         }
     }
+    const organizations = await getUserOrganizations()
+    // console.log(organizations)
 
 
     return (
         <SidebarProvider>
-            <AppSidebar  userProfile={userProfile}/>
+            <AppSidebar  userProfile={userProfile} organizations={organizations} />
             <SidebarInset>
                 <AppHeader />
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">

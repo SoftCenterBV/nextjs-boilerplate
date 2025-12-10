@@ -23,6 +23,9 @@
       "notification": "Notification"
     }
   },
+  "teams": {
+    "addTeam": "Add team"
+  },
   "appearance": {
     "light": "Light",
     "dark": "Dark",
