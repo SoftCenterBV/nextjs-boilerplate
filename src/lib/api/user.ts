@@ -3,7 +3,8 @@ import type {UserData} from './types';
 
 export async function getCurrentUserProfile(): Promise<UserData | null> {
     try {
-        return await fetchAsJson<UserData>('/users/me');
+        const currentUser = await fetchAsJson<{ data: UserData }>('/users/me');
+        return  currentUser.data;
     } catch (error: any) {
         return null;
     }

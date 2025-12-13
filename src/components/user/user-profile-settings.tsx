@@ -11,6 +11,7 @@ import {usePathname, useRouter} from "@/i18n/routing";
 import {useParams} from "next/navigation";
 import {toast} from "sonner";
 import {Button} from "@/components/ui/button";
+import {updateUserProfile} from "@/lib/api/server-actions/user-actions";
 
 interface ProfileFormNewProps {
     userData: UserData | null;
@@ -22,25 +23,21 @@ export default function UserProfileSettings({userData}: ProfileFormNewProps) {
     const router = useRouter();
     const pathname = usePathname();
     const params = useParams();
-    const [firstName, setFirstName] = useState(userData?.data.first_name);
-    const [lastName, setLastName] = useState(userData?.data.last_name);
-    const [email] = useState(userData?.data.email);
+    const [firstName, setFirstName] = useState(userData?.first_name);
+    const [lastName, setLastName] = useState(userData?.last_name);
+    const [email] = useState(userData?.email);
 
 
     const onUpdate = (e: React.FormEvent) => {
         e.preventDefault();
         startTransition(async () => {
-            toast.success('user updated')
-            // const updatedUser = await updateUserProfile(userData!.data.id, {
-            //     first_name: firstName,
-            //     last_name: lastName,
-            // });
+            const updatedUser = await updateUserProfile(userData!.id, {
+                first_name: firstName,
+                last_name: lastName,
+            })
 
-            // if (updatedUser) {
-            //     toast.success(t('updateSuccess'));
-            // } else {
-            //     toast.error(t('updateError'));
-            // }
+
+            toast.success('user updated')
         });
     };
     return (

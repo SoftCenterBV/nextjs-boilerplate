@@ -11,9 +11,9 @@ interface ProfileFormNewProps {
     userData: UserData | null;
 }
 export default function ProfileHeader({userData}: ProfileFormNewProps) {
-    const [firstName] = useState(userData?.data.first_name);
-    const [lastName] = useState(userData?.data.last_name);
-    const [email] = useState(userData?.data.email);
+    const [firstName] = useState(userData?.first_name);
+    const [lastName] = useState(userData?.last_name);
+    const [email] = useState(userData?.email);
 
     return (
         <Card>

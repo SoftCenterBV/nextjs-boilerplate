@@ -29,7 +29,6 @@ export type ApiError = {
  */
 
 export type UserData = {
-    data: {
         id: string;
         first_name: string;
         last_name: string;
@@ -44,7 +43,6 @@ export type UserData = {
         created_at: string;
         updated_at: string;
         organization: OrganizationData | null;
-    }
 };
 
 /**

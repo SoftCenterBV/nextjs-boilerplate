@@ -35,11 +35,11 @@ export function NavUser({ userProfile }: NavUserProps) {
     const tMenu = useTranslations('menu');
     const tAppearance = useTranslations('appearance');
     const tAuth = useTranslations('auth');
-    const profileName = userProfile ? `${userProfile.data.first_name} ${userProfile.data.last_name}` : 'User';
-    const profileEmail = userProfile?.data.email || '';
-    const avatarSrc = userProfile?.data.avatar || undefined;
+    const profileName = userProfile ? `${userProfile.first_name} ${userProfile.last_name}` : 'User';
+    const profileEmail = userProfile?.email || '';
+    const avatarSrc = userProfile?.avatar || undefined;
     const avatarFallback = userProfile
-        ? `${userProfile.data.first_name?.[0] ?? ''}${userProfile.data.last_name?.[0] ?? ''}`
+        ? `${userProfile.first_name?.[0] ?? ''}${userProfile.last_name?.[0] ?? ''}`
         : 'U';
 
     const { isMobile } = useSidebar()
