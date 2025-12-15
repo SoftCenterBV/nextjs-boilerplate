@@ -21,6 +21,10 @@
       "account": "Account",
       "security": "Beveiliging",
       "notification": "Meldingen"
+    },
+    "settings": {
+      "updateSuccess": "Profiel succesvol bijgewerkt.",
+      "updateError": "Er is een fout opgetreden bij het bijwerken van het profiel. Probeer het opnieuw."
     }
   },
   "teams": {

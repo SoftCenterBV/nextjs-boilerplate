@@ -21,6 +21,10 @@
       "account": "Account",
       "security": "Security",
       "notification": "Notification"
+    },
+    "settings": {
+      "updateSuccess": "Profile updated successfully.",
+      "updateError": "An error occurred while updating the profile. Please try again."
     }
   },
   "teams": {

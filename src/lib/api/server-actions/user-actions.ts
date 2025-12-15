@@ -30,7 +30,7 @@ export async function updateUserProfile(
                 const updatedUser = await patchAsJson<UserData>(`/users/${userId}`, data); // Response is UserData
 
                 // Revalidate relevant paths after successful update
-                revalidatePath('/profile');
+                revalidatePath('/user/settings');
                 revalidatePath('/', 'layout');
 
                 return updatedUser;

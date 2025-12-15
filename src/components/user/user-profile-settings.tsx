@@ -7,8 +7,6 @@ import {Label} from "@/components/ui/label";
 import {UserData} from "@/lib/api";
 import {startTransition, useState} from "react";
 import {useTranslations} from "next-intl";
-import {usePathname, useRouter} from "@/i18n/routing";
-import {useParams} from "next/navigation";
 import {toast} from "sonner";
 import {Button} from "@/components/ui/button";
 import {updateUserProfile} from "@/lib/api/server-actions/user-actions";
@@ -20,9 +18,6 @@ interface ProfileFormNewProps {
 
 export default function UserProfileSettings({userData}: ProfileFormNewProps) {
     const t = useTranslations('profile.settings');
-    const router = useRouter();
-    const pathname = usePathname();
-    const params = useParams();
     const [firstName, setFirstName] = useState(userData?.first_name);
     const [lastName, setLastName] = useState(userData?.last_name);
     const [email] = useState(userData?.email);
@@ -35,9 +30,12 @@ export default function UserProfileSettings({userData}: ProfileFormNewProps) {
                 first_name: firstName,
                 last_name: lastName,
             })
+            if (updatedUser) {
+                toast.success(t('updateSuccess'));
+            } else {
+                toast.error(t('updateError'));
+            }
 
-
-            toast.success('user updated')
         });
     };
     return (
