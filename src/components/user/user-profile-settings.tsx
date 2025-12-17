@@ -5,11 +5,12 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
 import {UserData} from "@/lib/api";
-import {startTransition, useState} from "react";
+import {startTransition, useEffect, useState} from "react";
 import {useTranslations} from "next-intl";
 import {toast} from "sonner";
 import {Button} from "@/components/ui/button";
 import {updateUserProfile} from "@/lib/api/server-actions/user-actions";
+import {useRouter} from "next/navigation";
 
 interface ProfileFormNewProps {
     userData: UserData | null;
@@ -18,9 +19,16 @@ interface ProfileFormNewProps {
 
 export default function UserProfileSettings({userData}: ProfileFormNewProps) {
     const t = useTranslations('profile.settings');
-    const [firstName, setFirstName] = useState(userData?.first_name);
-    const [lastName, setLastName] = useState(userData?.last_name);
-    const [email] = useState(userData?.email);
+    const [firstName, setFirstName] = useState(userData?.first_name ?? '');
+    const [lastName, setLastName] = useState(userData?.last_name ?? '');
+    const email = userData?.email ?? '';
+    const router = useRouter();
+
+    // Ensure local state follows server props when userData is refreshed
+    useEffect(() => {
+        setFirstName(userData?.first_name ?? '');
+        setLastName(userData?.last_name ?? '');
+    }, [userData?.id]);
 
 
     const onUpdate = (e: React.FormEvent) => {
@@ -32,6 +40,8 @@ export default function UserProfileSettings({userData}: ProfileFormNewProps) {
             })
             if (updatedUser) {
                 toast.success(t('updateSuccess'));
+                // Refresh the current route so server components re-fetch data and receive the updated user
+                router.refresh();
             } else {
                 toast.error(t('updateError'));
             }
